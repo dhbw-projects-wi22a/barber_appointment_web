@@ -33,7 +33,7 @@ This project aims to develop a web-based appointment scheduling system for a bar
 - Set up the backend in Java.
 - Configure the database (PostgreSQL).
 - Implement frontend features with HTML, CSS, and JavaScript (or Angular).
-- Integrate with third-party services (if needed).
+- Integrate with third-party services like GoolgeMaps or GoogleCalendar.
 
 ## Usage
 

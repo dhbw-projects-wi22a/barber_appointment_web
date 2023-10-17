@@ -1,0 +1,14 @@
+package app.scheduler.data.api;
+public interface UserManager {
+
+    List<User> readAllUser();
+
+     User createUser(String firstName, String lastName, String userPassword, String eMail, String phoneNum);
+
+     User loginUser(String email, String userPassword);
+
+     User logoffUser(String email, String token);
+
+     String getEmailForToken(String token);
+
+  }

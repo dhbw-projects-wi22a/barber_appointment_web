@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/dhbw_barber_scheduler.iml" filepath="$PROJECT_DIR$/.idea/dhbw_barber_scheduler.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/barber_appointment.iml" filepath="$PROJECT_DIR$/.idea/barber_appointment.iml" />
+>>>>>>> 4c46abd0f1d04dfe4c4bf390bb6448a9d1a67745
     </modules>
   </component>
 </project>

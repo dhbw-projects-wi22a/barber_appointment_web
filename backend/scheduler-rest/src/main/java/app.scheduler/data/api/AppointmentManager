@@ -1,0 +1,13 @@
+package app.scheduler.data.api;
+
+import java.util.List;
+
+public interface AppointmentManager {
+
+    List<Appointment> listAllAppointments();
+
+    void createAppointment();
+
+    void addAppointment();
+
+}

@@ -1,0 +1,22 @@
+package app.scheduler.data.api;
+
+public interface Appointment {
+
+    String getAppointmentID();
+
+    int getShopID();
+
+    int getCustomerID();
+
+    int getServiceID();
+
+    String getPrice();
+
+    String getDuration();
+
+    String getDate();
+
+    String getTime();
+
+
+}

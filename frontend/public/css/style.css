@@ -1,4 +1,165 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+/* Allgemeine Stilanpassungen */
+
 body {
-    background-color: grey;
+    font-family: 'Roboto';
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
 }
 
+/* Header-Stil */
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 2rem;
+}
+
+header p {
+    font-size: 1rem;
+}
+
+/* Navigationsmenü */
+
+nav {
+    background-color: #333; /* Hintergrundfarbe der Navigationsleiste */
+    overflow: hidden;
+    position: relative; /* Ändert die Position in "relative" */
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Schatten unter der Navigationsleiste */
+    z-index: 1000;
+    top: 0; /* Du kannst die Position mit "top" anpassen, um die vertikale Ausrichtung zu steuern */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s; /* sanfter Übergangseffekt beim Hovern */
+}
+/* Ändert die Hintergrundfarbe, wenn der Mauszeiger über einer Dropdown-Option schwebt */
+nav .dropdown-content a:hover {
+    background-color: #555;
+    color: #fff;
+}
+/* Zeigt das Dropdown-Menü, wenn der Mauszeiger darüber schwebt */
+nav:hover .dropdown-content {
+    display: block;
+}
+/* Ändert die Hintergrundfarbe, wenn der Mauszeiger darüber schwebt */
+nav a:hover {
+    background-color: #555;
+    color: #fff;
+    border-radius: 6px; /* Runde Ecken für die Buttons */
+}
+
+/* Fügt einen Dropdown-Pfeil hinzu, wenn es Untermenüs gibt */
+nav .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Stil für Dropdown-Menüoptionen */
+nav .dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+/* Hauptinhalt */
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+main h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+main p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+main a {
+    text-decoration: none;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+main a:hover {
+    background-color: #555;
+}
+
+/* Nebeninhalt (Seitenleiste) */
+
+aside {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+aside h3 {
+    font-size: 1.25rem;
+}
+
+aside p {
+    font-size: 1rem;
+}
+
+/* Footer */
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Responsive Anpassungen */
+
+@media (max-width: 768px) {
+    main {
+        padding: 10px;
+    }
+}

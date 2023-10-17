@@ -28,7 +28,18 @@ $(function() {
         $(".btn-goback").toggleClass("btn-goback-up");
         $(".forgot").toggleClass("forgot-fade");
     });
+
+    // Event-Handler to show/hide the password
+    $(".showpw").click(function() {
+        const PasswordField = $("input[name='password']");
+        if (PasswordField.attr("type") === "password") {
+            PasswordField.attr("type", "text"); // show password
+        } else {
+            PasswordField.attr("type", "password"); // hide password
+        }
+    });
 });
+    
 
 
 

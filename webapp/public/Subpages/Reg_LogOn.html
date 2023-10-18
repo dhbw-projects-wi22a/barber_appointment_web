@@ -3,16 +3,30 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <title>Jetzt anmelden bei QuickCutz</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../scripts/reg.js"></script>
-    <link rel="stylesheet" href="../css/login_style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
     
 </head>
 
 <body>
+    <header>
+        <h1>QuickCutz</h1>
+        <p>Blitzschnell zu deinem Barber-Termin!</p>
+    </header>
 
+    <nav>
+        <ul>
+            <li><a href="#">Startseite</a></li>
+            <li><a href="#">Benutzerbereich</a></li>
+            <li><a href="#">Terminbuchung</a></li>
+            <li><a href="#">Über uns</a></li>
+            <li><a href="#">Kontakt</a></li>
+        </ul>
+    </nav>
+    
        <div class="container">
         <div class="frame">
             <div class="nav">
@@ -72,11 +86,14 @@
             <div>
                 <div class="cover-photo"></div>
                 <div class="profile-photo"></div>
-                <h1 class="welcome">Willkommen zurück, {User}.</h1>
-                <a class="btn-goback" value="Refresh" onClick="history.go()">Go back</a>
+                <h1 class="welcome">Willkommen!</h1>
+                <a class="btn-goback" value="Refresh" onClick="history.go()">Zurück</a>
             </div>
         </div>
     </div>
+    <footer>
+        <p>&copy; 2023 QuickCutz - Buchungssystem</p>
+    </footer>
 </body>
 
 </html>

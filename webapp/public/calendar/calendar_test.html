@@ -3,6 +3,7 @@
 <head>
 <meta charset='utf-8' />
 <script src='../calendar/cal_script/index.global.js'></script>
+<!-- <link rel="stylesheet" href="../css/style.css"></script> -->
 <script>
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -62,42 +63,24 @@
   });
 
 </script>
-<style>
 
-  body {
-    margin: 40px 10px;
-    padding: 0;
-    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-    font-size: 14px;
-  }
-
-  #calendar {
-    max-width: 1100px;
-    margin: 0 auto;
-  
-  }
-
-  /* freie Termine */
-  .free-slot {
-    background-color: green;
-    border-color: green;
-    color: white;
-    font-weight: bold;
-  }
-
-  /* vergebene Termine */
-  .booked-slot {
-    background-color: red;
-    border-color: red;
-    color: white;
-    font-weight: bold;
-  }
-
-</style>
 </head>
 <body>
+  <header>
+    <h1>QuickCutz</h1>
+    <p>Blitzschnell zu deinem Barber-Termin!</p>
+</header>
 
-  <div id='calendar'></div>
+<nav>
+    <ul>
+        <li><a href="#">Startseite</a></li>
+        <li><a href="#">Benutzerbereich</a></li>
+        <li><a href="#">Terminbuchung</a></li>
+        <li><a href="#">Über uns</a></li>
+        <li><a href="#">Kontakt</a></li>
+    </ul>
+</nav>
+<div id='calendar'></div>
 
 </body>
 </html>

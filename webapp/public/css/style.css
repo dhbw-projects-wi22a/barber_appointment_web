@@ -4,7 +4,10 @@
 
 body {
     font-family: 'Roboto';
-    background-color: #f2f2f2;
+    background-image: url(background.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
     margin: 0;
     padding: 0;
 }
@@ -12,10 +15,10 @@ body {
 /* Header-Stil */
 
 header {
-    background-color: #333;
+    background-color: #432703;
     color: #fff;
     text-align: center;
-    padding: 20px;
+    padding: 5px;
 }
 
 header h1 {
@@ -29,7 +32,7 @@ header p {
 /* Navigationsmenü */
 
 nav {
-    background-color: #333; /* Hintergrundfarbe der Navigationsleiste */
+    background-color: #432703; /* Hintergrundfarbe der Navigationsleiste */
     overflow: hidden;
     position: relative; /* Ändert die Position in "relative" */
     width: 100%;
@@ -60,17 +63,14 @@ nav a {
     transition: background-color 0.3s; /* sanfter Übergangseffekt beim Hovern */
 }
 /* Ändert die Hintergrundfarbe, wenn der Mauszeiger über einer Dropdown-Option schwebt */
-nav .dropdown-content a:hover {
-    background-color: #555;
-    color: #fff;
-}
+
 /* Zeigt das Dropdown-Menü, wenn der Mauszeiger darüber schwebt */
 nav:hover .dropdown-content {
     display: block;
 }
 /* Ändert die Hintergrundfarbe, wenn der Mauszeiger darüber schwebt */
 nav a:hover {
-    background-color: #555;
+    background-color: #8d5307;
     color: #fff;
     border-radius: 6px; /* Runde Ecken für die Buttons */
 }
@@ -100,7 +100,7 @@ main {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: rgba(242,242,243,0.8);
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -130,31 +130,20 @@ main a:hover {
     background-color: #555;
 }
 
-/* Nebeninhalt (Seitenleiste) */
-
-aside {
-    background-color: #f2f2f2;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-aside h3 {
-    font-size: 1.25rem;
-}
-
-aside p {
-    font-size: 1rem;
-}
-
 /* Footer */
 
 footer {
-    background-color: #333;
     color: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #432703; /* Hintergrundfarbe anpassen */
     text-align: center;
     padding: 10px;
+    z-index: 999; /* Damit der Footer unter der 'aside' liegt */
 }
+
 
 /* Responsive Anpassungen */
 

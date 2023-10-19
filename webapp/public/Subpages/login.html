@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../scripts/login.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1 class="pageheader">QuickCutz</h1>
+        <p class="pageslogan">Blitzschnell zu deinem Barber-Termin!</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">Startseite</a></li>
+            <li><a href="#">Benutzerbereich</a></li>
+            <li><a href="#">Terminbuchung</a></li>
+            <li><a href="#">Über uns</a></li>
+        </ul>
+    </nav>
+    
+    <main id="main-holder">
+        <h1 id="login-header">Login</h1>
+    
+        <div id="login-error-msg-holder">
+          <p id="login-error-msg">Falsche E-Mailadresse <span id="error-msg-second-line">und/oder Passwort</span></p>
+        </div>
+        
+        <form id="login-form">
+          <input type="text" name="username" id="username-field" class="login-form-field" placeholder="name@mail.de">
+          <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Passwort">
+          <input type="submit" value="Login" id="login-form-submit">
+          <input type="submit" value="Passwort vergessen?" id="login-forgot-password">
+        </form>
+        <p id="message"></p>
+    </main>
+    
+    <footer>
+        <p>&copy; 2023 QuickCutz - Buchungssystem</p>
+    </footer>
+</body>
+
+</html>
+

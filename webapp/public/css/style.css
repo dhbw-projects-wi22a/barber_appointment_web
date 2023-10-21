@@ -145,6 +145,7 @@ footer {
     text-align: center;
     padding: 10px;
     z-index: 999; /* Damit der Footer unter der 'aside' liegt */
+    margin-top: 5%;
 }
 
 /* Login-Form*/
@@ -207,7 +208,8 @@ footer {
 }
 
 #login-form-submit,
-#login-forgot-password {
+#login-forgot-password,
+#login-create-account {
   width: 100%;
   padding: 7px;
   margin-top: 10px;
@@ -221,7 +223,62 @@ footer {
 }
 
 
+/* Calendar styles */
+#calendar {
+  background-color: rgba(242,242,243,0.7);
+  margin-top: 25px;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-bottom: 5%;
+  width: 55%;
+  height: 35%;
+  }
 
 
 
+.fc-event {
+  background-color:#555;
+  color: white;
+  text-align: center;
+}
 
+:root {
+  --fc-today-bg-color: rgba(25, 193, 193, 0.489);
+}
+
+/* Styles für die Serviceoptionen */
+#book-appointment {
+  background-color: rgba(242, 242, 243, 0.6);
+  padding: 15px;
+  border-radius: 7px;
+  box-shadow: 0px 0px 5px 2px black;
+  margin: 10px;
+  margin-top: 5%;
+
+  width: 40%;
+}
+
+/* Stil für die Radiobutton-Labels */
+.radio-label {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Stil für die Radiobuttons */
+.radio-input {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* Stil für den Radiobutton-Text */
+.radio-text {
+  font-size: 16px;
+  color: #3a3a3a;
+}
+
+.container {
+  display: flex;
+  align-items: flex-start; /* Ausrichtung der Elemente am Anfang der Hauptachse */
+  justify-content: space-between; /* Elemente werden am Anfang und am Ende des Containers ausgerichtet */
+  padding: 15px;
+}

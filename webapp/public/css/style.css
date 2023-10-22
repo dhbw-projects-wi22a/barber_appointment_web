@@ -23,6 +23,14 @@ header {
     color: #fff;
     text-align: center;
     padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#logo {
+  max-width: 250px;
+  height: auto;
 }
 
 h1 {
@@ -254,26 +262,20 @@ footer {
   box-shadow: 0px 0px 5px 2px black;
   margin: 10px;
   margin-top: 5%;
-
-  width: 40%;
+  width: 50%;
 }
 
-/* Stil für die Radiobutton-Labels */
-.radio-label {
+#submit-appointment {
+  width:auto;
+  padding: 7px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  color: white;
   font-weight: bold;
-  margin-bottom: 10px;
-}
-
-/* Stil für die Radiobuttons */
-.radio-input {
-  margin-right: 10px;
+  background-color: #3a3a3a;
   cursor: pointer;
-}
-
-/* Stil für den Radiobutton-Text */
-.radio-text {
-  font-size: 16px;
-  color: #3a3a3a;
+  outline: none;
 }
 
 .container {
@@ -282,3 +284,16 @@ footer {
   justify-content: space-between; /* Elemente werden am Anfang und am Ende des Containers ausgerichtet */
   padding: 15px;
 }
+
+.hint-box {
+  margin-top: 10px; /* Fügt Abstand zwischen Submit-Button und Hinweis-Box hinzu */
+  padding: 10px;
+  background-color: #f0f0f0; /* Hintergrundfarbe der Hinweis-Box */
+  border: 1px solid #ccc; /* Rand um die Hinweis-Box */
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+  width: 50%;
+}
+

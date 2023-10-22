@@ -16,6 +16,7 @@
       initialView: 'timeGridWeek',
       nowIndicator: true,
       expandRows: true,
+      selectable: true,
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',
@@ -64,14 +65,14 @@
     });
     calendar.render();
   });
+  
 
 </script>
 
 </head>
 <body>
   <header>
-    <h1>QuickCutz</h1>
-    <p>Blitzschnell zu deinem Barber-Termin!</p>
+    <img id="logo" src="../css/logo.png" alt="QuickCutz Logo">
 </header>
 
 <nav>
@@ -89,6 +90,7 @@
 <div id='calendar'></div>
 
 <form id="book-appointment">
+  <h3>Wähle deinen gewünschten Service</h3>
   <label>
       <input type="radio" name="hairstyle" value="service1">
       Maschinenschnitt - Dauer: 15min - Preis: 18.00€
@@ -101,7 +103,7 @@
 
   <label>
       <input type="radio" name="hairstyle" value="service3">
-      Regulärer Haarschnitt & Bart- Dauer: 30min - Preis: 28.00€
+      Regulärer Haarschnitt & Bart- Dauer: 45min - Preis: 28.00€
   </label><br>
 
   <label>
@@ -111,10 +113,20 @@
 
   <label>
       <input type="radio" name="hairstyle" value="service5">
-      Rundum-Styling (inkl. Haare, Bart und Augenbrauen) - Dauer: 45min - Preis 35.00€
+      Rundum-Service (inkl. Haare, Bart und Augenbrauen) - Dauer: 45min - Preis 35.00€
   </label><br>
+  <h3>Wähle deinen Wunschtermin</h3>
+    <label for="selected-date">Wähle einen Tag:</label>
+    <input type="date" id="selected-date" name="selected-date" value="<%= LocalDateTime.now().toLocalDate() %>">
+    <input type="time" id="selected-time" name="selected-time" value="<%= LocalDateTime.now().toLocalTime() %>">
+    <br> <br>
+    <input type="submit" id="submit-appointment" value="Jetzt buchen">
 
-  <input type="submit" value="Jetzt buchen">
+    <div class="hint-box">
+      Buchungen können 24h vor dem Termin kostenfrei geändert oder storniert werden.<br>
+      Für kurzfristigere Änderungen melde dich bei uns.
+    </div>
+
 </div>
 
 

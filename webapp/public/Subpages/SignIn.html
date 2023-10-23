@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Login - QuickCutz</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../scripts/login.js"></script>
     <link rel="stylesheet" href="../css/style.css">
@@ -19,9 +19,14 @@
     <nav>
         <ul>
             <li><a href="../Homepage.html">Startseite</a></li>
-            <li><a href="./UserArea.html">Benutzerbereich</a></li>
-            <li><a href="#">Terminbuchung</a></li>
-            <li><a href="#">Über uns</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">Kundenbereich</a>
+                    <ul class="dropdown-content">
+                        <li><a href="../subpages/SignUp.html">Registrierung</a></li>
+                        <li><a href="../subpages/SignIn.html">Login</a></li>
+                    </ul></li>
+            <li><a href="../calendar/calendar_v1.html">Terminbuchung</a></li>
+            <li><a href="../subpages/aboutus.html">Über uns</a></li>
         </ul>
     </nav>
     
@@ -36,8 +41,12 @@
           <input type="text" name="username" id="username-field" class="login-form-field" placeholder="name@mail.de">
           <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Passwort">
           <input type="submit" value="Login" id="login-form-submit">
-          <input type="submit" value="Passwort vergessen?" id="login-forgot-password">
-          <input type="submit" value="Jetzt registrieren" id="login-create-account">
+          <a href="../subpages/NewPassword.html">Passwort vergessen?</a>
+          <a href="../subpages/SignUp.html">Jetzt registrieren</a>
+
+          <!-- <input type="submit" value="Passwort vergessen?" id="login-forgot-password">
+          <input type="submit" href="../subpages/SignUp.html" value="Jetzt registrieren" id="login-create-account">-->
+
           
         </form>
         <p id="message"></p>

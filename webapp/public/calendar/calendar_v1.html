@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>QuickCutz</title>
+<title>Terminbuchung - QuickCutz</title>
 <meta charset='utf-8' />
 <script src='../calendar/cal_script/index.global.js'></script>
 <link rel="stylesheet" href="../css/style.css"></script>
@@ -76,13 +76,17 @@
 </header>
 
 <nav>
-    <ul>
-        <li><a href="#">Startseite</a></li>
-        <li><a href="#">Benutzerbereich</a></li>
-        <li><a href="#">Terminbuchung</a></li>
-        <li><a href="#">Über uns</a></li>
-        <li><a href="#">Kontakt</a></li>
-    </ul>
+  <ul>
+      <li><a href="../Homepage.html">Startseite</a></li>
+      <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">Kundenbereich</a>
+              <ul class="dropdown-content">
+                  <li><a href="../subpages/SignUp.html">Registrierung</a></li>
+                  <li><a href="../subpages/SignIn.html">Login</a></li>
+              </ul></li>
+      <li><a href="../calendar/calendar_v1.html">Terminbuchung</a></li>
+      <li><a href="../subpages/aboutus.html">Über uns</a></li>
+  </ul>
 </nav>
 
 <div class="container">

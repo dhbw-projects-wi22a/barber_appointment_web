@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registrierung - QuickCutz</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../scripts/login.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <img id="logo" src="../css/logo.png" alt="QuickCutz Logo">
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="../Homepage.html">Startseite</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">Kundenbereich</a>
+                    <ul class="dropdown-content">
+                        <li><a href="../subpages/SignUp.html">Registrierung</a></li>
+                        <li><a href="../subpages/SignIn.html">Login</a></li>
+                    </ul></li>
+            <li><a href="../calendar/calendar_v1.html">Terminbuchung</a></li>
+            <li><a href="../subpages/aboutus.html">Über uns</a></li>
+        </ul>
+    </nav>
+    
+    <main id="main-holder">
+        <h1 id="login-header">Jetzt registrieren</h1>
+    
+        <div id="login-error-msg-holder">
+          <p id="login-error-msg">Falsche E-Mailadresse <span id="error-msg-second-line">und/oder Passwort</span></p>
+        </div>
+        
+        <form id="signup-form">
+            <input type="text" name="username" id="username-field" class="signup-field" placeholder="name@mail.de">
+            <input type="password" name="password" id="password-field" class="signup-field" placeholder="Passwort">
+            <input type="text" name="firstname" id="firstname-field" class="signup-field" placeholder="Vorname">
+            <input type="text" name="lastname" id="lastname-field" class="signup-field" placeholder="Nachname">
+            <input type="text" name="phoneNum" id="phoneNum-field" class="signup-field" placeholder="+49 1577 781680">
+            <input type="submit" value="Benutzerkonto erstellen" id="login-form-submit">
+            
+            
+            <!-- <input type="submit" value="Passwort vergessen?" id="login-forgot-password">
+            <input type="submit" href="../subpages/SignUp.html" value="Jetzt registrieren" id="login-create-account">-->
+          
+        </form>
+        <div class="hint-box">
+            Infos?<br>
+          </div>
+        <p id="message"></p>
+    </main>
+    
+    <footer>
+        <p>&copy; 2023 QuickCutz - Buchungssystem</p>
+    </footer>
+</body>
+
+</html>
+

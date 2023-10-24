@@ -24,14 +24,13 @@ header {
   background-color: #000000;
   color: #fff;
   text-align: center;
-  padding: 3px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 #logo {
-  max-width: 250px;
+  max-width: 200px;
   height: auto;
 }
 
@@ -53,8 +52,6 @@ nav {
   justify-content: space-around;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Schatten unter der Navigationsleiste */
   z-index: 1000;
-  top: 0; /* Du kannst die Position mit "top" anpassen, um die vertikale Ausrichtung zu steuern */
-
   padding: 0;
   margin: 0;
 }
@@ -130,7 +127,7 @@ nav a:hover {
 
 main {
   max-width: 800px;
-  margin: 150px auto;
+  margin: 80px auto;
   padding: 20px;
   background-color: rgba(242, 242, 243, 0.6);
   border-radius: 5px;
@@ -239,24 +236,61 @@ footer {
 }
 
 #login-form-submit,
-#login-forgot-password,
-#login-create-account {
-  width: 100%;
+#login-signup,
+#login-pw-recovery,
+#signup-form-submit,
+#pw-recovery,
+#submit-appointment {
+  text-decoration: none;
+  background-color: #333;
+  color: #fff;
   padding: 10px 20px;
-  margin-top: 10px;
-  border-radius: 5px;
-  color: white;
-  background-color: #3a3a3a;
-  cursor: pointer;
-  outline: none;
   display: inline-block;
+  margin-top: 10px;
   transition: background-color 0.3s;
-  text-decoration: none;;
+  font-family: 'Roboto';
+  width: 100%;
+  font-size: 1rem;
+  line-height: 1;
+  text-align: center;
+  border-radius: 6px; /* Leicht abgerundete Ecken */
 }
+
+#book-appointment-landing,
+#login-signup-landing,
+#login-signin-landing {
+  text-decoration: none;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  display: inline-block;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+  font-family: 'Roboto';
+  font-size: 1rem;
+  line-height: 1;
+  text-align: center;
+  border-radius: 6px; /* Leicht abgerundete Ecken */
+}
+
+#login-form-submit:hover,
+#login-signup:hover,
+#login-pw-recovery:hover,
+#signup-form-submit:hover,
+#pw-recovery:hover,
+#submit-appointment:hover,
+#book-appointment-landing:hover,
+#login-signup-landing:hover,
+#login-signin-landing:hover  {
+  background-color: #555;
+  color: #d29107
+}
+
+
 
 /* Calendar styles */
 #calendar {
-  background-color: rgba(242,242,243,0.7);
+  background-color: rgba(241,242,243,0.7);
   margin-top: 25px;
   margin-left: 25px;
   margin-right: 25px;
@@ -274,7 +308,7 @@ footer {
 }
 
 :root {
-  --fc-today-bg-color: rgba(25, 193, 193, 0.489);
+  --fc-today-bg-color: rgba(210,145,7, 0.25);
 }
 
 /* Styles für die Serviceoptionen */

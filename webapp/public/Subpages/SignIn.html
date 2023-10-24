@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title>Login - QuickCutz</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="../scripts/login.js"></script>
+    <script src="../scripts/signup_in.js"></script>
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
 </head>
@@ -38,16 +38,12 @@
         </div>
         
         <form id="login-form">
-          <input type="text" name="username" id="username-field" class="login-form-field" placeholder="name@mail.de">
-          <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Passwort">
-          <input type="submit" value="Login" id="login-form-submit">
-          <a href="../subpages/NewPassword.html">Passwort vergessen?</a>
-          <a href="../subpages/SignUp.html">Jetzt registrieren</a>
-
-          <!-- <input type="submit" value="Passwort vergessen?" id="login-forgot-password">
-          <input type="submit" href="../subpages/SignUp.html" value="Jetzt registrieren" id="login-create-account">-->
-
-          
+            <form id="login-form">
+                <input type="text" name="username" id="username-field" class="login-form-field" placeholder="name@mail.de">
+                <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Passwort">
+                <input type="submit" value="Login" id="login-form-submit">
+                <button type="button" id="login-pw-recovery">Passwort vergessen?</button>
+                <button type="button" id="login-signup" >Jetzt registrieren</button>
         </form>
         <p id="message"></p>
     </main>

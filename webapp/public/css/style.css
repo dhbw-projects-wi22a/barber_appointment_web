@@ -51,9 +51,8 @@ nav {
   display: flex;
   justify-content: space-around;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Schatten unter der Navigationsleiste */
-  z-index: 1000;
-  padding: 0;
-  margin: 0;
+  z-index: 0;
+
 }
 
 nav ul {
@@ -75,7 +74,7 @@ nav a {
 }
 
 /* Stil für Navigationsleistenbuttons */
-nav ul li a  {
+nav ul li a {
   border: 1px solid #d29107; /* Helle braune Umrandung */
   border-radius: 6px; /* Leicht abgerundete Ecken */
   display: inline-block;
@@ -90,38 +89,47 @@ nav a:hover {
   border-radius: 6px; /* Runde Ecken für die Buttons */
 }
 
-/* Dropdown Userarea */
-.dropdown-content {
-  display: none;
-  position: fixed;
+.dropdown {
+  position: relative;
 }
 
-/* Style the links inside the dropdown */
-.dropdown-content a {
-  display: block;
+
+.dropbtn {
+  border: 1px solid #d29107; /* Helle braune Umrandung */
+  border-radius: 6px; /* Leicht abgerundete Ecken */
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
+.dropdown-content {
+  display: none;
+}
+
 /* Style the list items within the dropdown */
 .dropdown-content li {
   display: block;
   margin: 0;
-  margin-left: 10px;
   padding: 0;
-  margin-top: 5px;
-  background-color: #402400; /* Hintergrundfarbe für die Dropdown-Buttons */
-  border-radius: 6px; /* Leicht abgerundete Ecken */
+  background-color: #402400;
+  border-radius: 6px;
   text-align: center;
-  text-decoration: none;
+}
+
+.dropdown-content a {
+  display: block; /* Die Dropdown-Links sollten jetzt als Block-Elemente angezeigt werden */
+  text-align: center;
 }
 
 /* Optional: Add some spacing between the list items */
 .dropdown-content li:not(:last-child) {
   margin-bottom: 5px;
 }
+
 
 /* Hauptinhalt */
 

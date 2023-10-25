@@ -122,12 +122,28 @@
       Rundum-Service (inkl. Haare, Bart und Augenbrauen) - Dauer: 45min - Preis 35.00€
   </label><br>
   <h3>Wähle deinen Wunschtermin</h3>
-    <label for="selected-date">Tag:</label>
-    <input type="date" id="selected-date" name="selected-date" value="<%= LocalDateTime.now().toLocalDate() %>">
+    <label for="datePicker">Tag:</label>
+    <input type="date" id="datePicker">
     </br>
-    <label for="selected-time">Uhrzeit</label>
-    <input type="time" min="10:00" max="19:00" step="00:15" id="selected-time" name="selected-time">
-    <!--<input type="time" id="selected-time" name="selected-time" value="<%= LocalDateTime.now().toLocalTime() %>"> -->
+    <label for="hour">Uhrzeit</label>
+    <select id="hour">
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+      <option value="13">13</option>
+      <option value="14">14</option>
+      <option value="15">15</option>
+      <option value="16">16</option>
+      <option value="17">17</option>
+      <option value="18">18</option>
+    </select>
+    <strong>:</strong>
+    <select id="minute">
+      <option value="00">00</option>
+      <option value="15">15</option>
+      <option value="30">30</option>
+      <option value="45">45</option>
+    </select>
     <br> <br>
     <input type="submit" id="submit-appointment" value="Jetzt buchen">
 

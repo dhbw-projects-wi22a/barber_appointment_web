@@ -364,3 +364,7 @@ footer {
   text-align: center;
   width: 50%;
 }
+
+#map {
+  height: 100%;
+}

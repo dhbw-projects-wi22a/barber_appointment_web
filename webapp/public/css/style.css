@@ -224,7 +224,8 @@ footer {
 }
 
 #login-form ,
-#signup-form {
+#signup-form,
+#userForm {
   align-self: flex-start;
   display: grid;
   justify-items: center;
@@ -251,7 +252,8 @@ footer {
 #login-pw-recovery,
 #signup-form-submit,
 #pw-recovery,
-#submit-appointment {
+#submit-appointment,
+#save-userarea {
   text-decoration: none;
   background-color: #333;
   color: #fff;
@@ -292,12 +294,28 @@ footer {
 #submit-appointment:hover,
 #book-appointment-landing:hover,
 #login-signup-landing:hover,
-#login-signin-landing:hover  {
+#login-signin-landing:hover,
+#save-userarea:hover  {
   background-color: #555;
   color: #d29107
 }
 
+/* Appointment table user area */
 
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
 
 /* Calendar styles */
 #calendar {

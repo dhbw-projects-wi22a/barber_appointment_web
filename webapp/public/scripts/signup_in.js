@@ -72,6 +72,7 @@ function goToLogin() {
   window.location.href = "../subpages/SignIn.html";
 }
 
+
 // Button-function signup (homepage)
 function goToSignUpHP() {
   window.location.href = "./subpages/SignUp.html";
@@ -86,6 +87,8 @@ function goToLoginHP() {
 function goToCalHP() {
   window.location.href = "./calendar/calendar_v1.html";
 }
+
+
 
 // Warten auf das Laden des DOM, um sicherzustellen, dass die HTML-Elemente verfügbar sind
 document.addEventListener("DOMContentLoaded", function () {

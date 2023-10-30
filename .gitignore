@@ -4,4 +4,5 @@
 # Ignoriere den Ordner "temp" und alle seine Inhalte
 temp/
 
-# Ignoriere eine bestimmte Datei namens "config
+# Ignoriere eine bestimmte Datei namens "config.ini"
+config.ini

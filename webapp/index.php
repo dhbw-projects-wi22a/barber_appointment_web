@@ -1,1 +1,3 @@
-<?php header( 'Location: /public/Homepage.html' ) ; ?>
+<?php
+header('Location: /public/Homepage.html');
+exit; ?>

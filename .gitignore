@@ -1,0 +1,7 @@
+# Ignoriere Dateien mit der Erweiterung .log
+*.log
+
+# Ignoriere den Ordner "temp" und alle seine Inhalte
+temp/
+
+# Ignoriere eine bestimmte Datei namens "config

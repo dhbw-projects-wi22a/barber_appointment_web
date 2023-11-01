@@ -59,33 +59,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Button-function password recovery
 function goToPasswordRecovery() {
-  window.location.href = "../subpages/NewPassword.html";
+  window.location.href = "./subpages/NewPassword.html";
 }
 
 // Button-function signup
 function goToSignUp() {
-  window.location.href = "../subpages/SignUp.html";
+  window.location.href = "./subpages/SignUp.html";
 }
 
 // Button-function login
 function goToLogin() {
-  window.location.href = "../subpages/SignIn.html";
+  window.location.href = "./subpages/SignIn.html";
 }
 
 
 // Button-function signup (homepage)
 function goToSignUpHP() {
-  window.location.href = "./subpages/SignUp.html";
+  window.location.href = "/subpages/SignUp.html";
 }
 
 // Button-function login (homepage)
 function goToLoginHP() {
-  window.location.href = "./subpages/SignIn.html";
+  window.location.href = "/subpages/SignIn.html";
 }
 
 // Button-function calendar (homepage)
 function goToCalHP() {
-  window.location.href = "./calendar/calendar_v1.html";
+  window.location.href = "/calendar/calendar_v1.html";
 }
 
 
@@ -124,3 +124,104 @@ document.addEventListener("DOMContentLoaded", function () {
     calendarButtonLanding.addEventListener("click", goToCalHP);
   }
 });
+
+
+
+// ### Backend calls 
+
+// Sign Up Page - POST to backend
+
+$(document).ready(function() {
+
+  $('#signup-form').submit(function(event) {
+      event.preventDefault(); // Verhindert Standardverhalten des Formulars
+
+      // Erfasse die Formulardaten
+      var formData = {
+          email: $('#email-field').val(),  // username = email 
+          password: $('#password-field').val(),
+          firstname: $('#firstname-field').val(),
+          lastname: $('#lastname-field').val(),
+          phoneNum: $('#phoneNum-field').val()
+      };
+
+      // POST to MappingController
+      $.ajax({
+          type: 'POST',
+          url: 'https://dhbw-appointment-scheduler-ad7e04c77a13.herokuapp.com/api/v1.0/user/create', // URL of Heroku
+          contentType: 'application/json',
+          data: JSON.stringify(formData),
+          success: function(response) {
+              // Success-Handling 
+              $('#message').text('Registrierung erfolgreich: ' + response.message);
+              showPopup('Geschafft: Prüfe dein E-Mailpostfach');
+          },
+          error: function(error) {
+              // Errorhandling
+              $('#message').text('Fehler bei der Registrierung: ' + error.statusText);
+              showPopup('Fehler: Registrierung fehlgeschlagen');
+          }
+      });
+  });
+});
+
+/* Sign in page - POST to backend */ 
+$(document).ready(function() {
+
+  $('#login-form').submit(function(event) {
+      event.preventDefault(); // Verhindert Standardverhalten des Formulars
+
+      // Erfasse die Formulardaten
+      var formData = {
+          email: $('#email-field').val(),  // username = email 
+          password: $('#password-field').val()
+      };
+
+      // POST to MappingController
+      $.ajax({
+          type: 'POST',
+          url: 'https://dhbw-appointment-scheduler-ad7e04c77a13.herokuapp.com/api/v1.0/auth/login', // URL of Heroku
+          contentType: 'application/json',
+          data: JSON.stringify(formData),
+          success: function(response) {
+              // Success-Handling 
+              $('#message').text('Anmeldung erfolgreich: ' + response.message);
+              showPopup('Du bis jetzt eingeloggt');
+          },
+          error: function(error) {
+              // Errorhandling
+              $('#message').text('Fehler bei der Anmeldung: ' + error.statusText);
+              showPopup('Fehler: Prüfe E-Mail und/oder Passwort');
+          }
+      });
+  });
+});
+
+/* Password recovery */
+
+/* Appointment create */
+
+/* List all appointments for calendar */
+
+/* List appointments for user */
+
+/* List data for user profile */
+
+
+
+
+
+
+
+
+
+// Popup for event handling 
+function showPopup(message) {
+  $('#popup-msg').text(message);
+  $('#popup').fadeIn();
+}
+// Ausblenden des Pop-ups
+function hidePopup() {
+  $('#popup').fadeOut();
+}
+

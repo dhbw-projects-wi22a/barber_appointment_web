@@ -138,10 +138,10 @@ $(document).ready(function() {
 
       // Erfasse die Formulardaten
       var formData = {
-          email: $('#email-field').val(),  // username = email 
-          userPpassword: $('#password-field').val(),
           firstName: $('#firstname-field').val(),
           lastName: $('#lastname-field').val(),
+          eMail: $('#email-field').val(),  // username = email 
+          userPassword: $('#password-field').val(),
           phoneNum: $('#phoneNum-field').val()
       };
 
@@ -215,13 +215,18 @@ $(document).ready(function() {
 
 
 
-// Popup for event handling 
+// Popup für Event-Handling
 function showPopup(message) {
   $('#popup-msg').text(message);
   $('#popup').fadeIn();
+
+  // Automatisches Ausblenden nach 2 Sekunden
+  setTimeout(function() {
+    hidePopup();
+  }, 2000); // 2000 Millisekunden entsprechen 2 Sekunden
 }
+
 // Ausblenden des Pop-ups
 function hidePopup() {
   $('#popup').fadeOut();
 }
-

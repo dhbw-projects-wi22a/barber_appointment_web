@@ -139,9 +139,9 @@ $(document).ready(function() {
       // Erfasse die Formulardaten
       var formData = {
           email: $('#email-field').val(),  // username = email 
-          password: $('#password-field').val(),
-          firstname: $('#firstname-field').val(),
-          lastname: $('#lastname-field').val(),
+          userPpassword: $('#password-field').val(),
+          firstName: $('#firstname-field').val(),
+          lastName: $('#lastname-field').val(),
           phoneNum: $('#phoneNum-field').val()
       };
 

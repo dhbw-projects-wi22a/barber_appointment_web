@@ -173,8 +173,8 @@ $(document).ready(function() {
 
       // Erfasse die Formulardaten
       var formData = {
-          email: $('#email-field').val(),  // username = email 
-          password: $('#password-field').val()
+          eMail: $('#email-field').val(),  // username = email 
+          userPassword: $('#password-field').val()
       };
 
       // POST to MappingController
@@ -197,6 +197,37 @@ $(document).ready(function() {
   });
 });
 
+/* List data for user profile */
+document.addEventListener('DOMContentLoaded', function() {
+  // Hier noch einbauen das die customerID anhand des Tokens abgerufen wird?!
+  var customerID = 1; // Beispiel: 1
+
+  // GET-Command 
+  $.ajax({
+    type: 'GET',
+    url: 'https://dhbw-appointment-scheduler-ad7e04c77a13.herokuapp.com/api/v1.0/appointments/user?customerID=' + customerID,
+    dataType: 'application/json',
+    success: function(data) {
+      var userForm = document.getElementById('userForm');
+
+      // Fülle die Formularfelder mit den Daten
+      userForm.querySelector('.email').value = data.eMail;
+      userForm.querySelector('.password').value = data.userPassword;
+      userForm.querySelector('.phoneNumber').value = data.phoneNum;
+      userForm.querySelector('.firstName').value = data.firstName;
+      userForm.querySelector('.lastName').value = data.lastName;
+    },
+    error: function(error) {
+      // Fehlerbehandlung hier ausbauen
+      console.error('Fehler beim Abrufen der Benutzerdaten:', error);
+    }
+  });
+});
+
+
+
+
+
 /* Password recovery */
 
 /* Appointment create */
@@ -205,7 +236,7 @@ $(document).ready(function() {
 
 /* List appointments for user */
 
-/* List data for user profile */
+
 
 
 

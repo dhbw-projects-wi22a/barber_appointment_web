@@ -1,164 +1,184 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Terminbuchung - QuickCutz</title>
-<meta charset='utf-8' />
-<script src='../calendar/cal_script/index.global.js'></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="../scripts/script.js"></script>
-<link rel="stylesheet" href="../css/style.css"></script>
-<script>
-
-  document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
-
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      locale: 'de',
-      initialDate: new Date(),
-      initialView: 'timeGridWeek',
-      nowIndicator: true,
-      expandRows: true,
-      selectable: true,
-      headerToolbar: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'timeGridDay,timeGridWeek'
-      },
-      navLinks: true, // can click day/week names to navigate views
-      editable: true,
-      selectable: true,
-      selectMirror: true,
-      dayMaxEvents: true, // allow "more" link when too many events
-      businessHours: {
-        startTime: '10:00',
-        endTime: '19:00',
-      },
-      slotMinTime: '10:00', // only show slots between 10am and 7pm
-      slotMaxTime: '19:00',
-      hiddenDays: [ 0, 7 ], // hide Sundays
-      slotDuration: '00:15', // 15 minutes time slots
-      events: [
-        {
-          title: 'Nicht verfügbar',
-          start: '2023-10-16T10:00:00',
-          end: '2023-10-16T10:30:00',
-          status: 'booked'
+  <title>Terminbuchung - QuickCutz</title>
+  <meta charset='utf-8' />
+  <script src='../calendar/cal_script/index.global.js'></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="../scripts/script.js"></script>
+  <link rel="stylesheet" href="../css/style.css"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var calendarEl = document.getElementById('calendar');
+  
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        locale: 'de',
+        initialDate: new Date(),
+        initialView: 'timeGridWeek',
+        nowIndicator: true,
+        expandRows: true,
+        selectable: true,
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'timeGridDay,timeGridWeek'
         },
-        {
-          title: 'nicht Verfügbar',
-          start: '2023-10-21T11:00:00',
-          end: '2023-10-21T11:30:00',
-          status: 'booked'
+        navLinks: true, // can click day/week names to navigate views
+        editable: true,
+        selectable: true,
+        selectMirror: true,
+        dayMaxEvents: true, // allow "more" link when too many events
+        businessHours: {
+          startTime: '10:00',
+          endTime: '19:00',
         },
-        {
-          groupId: 999,
-          title: 'Nicht Verfügbar',
-          start: '2023-10-20T12:45:00',
-          end: '2023-10-20T13:30:00',
-          status: 'booked'
+        slotMinTime: '10:00', // only show slots between 10am and 7pm
+        slotMaxTime: '19:00',
+        hiddenDays: [0, 7], // hide Sundays
+        slotDuration: '00:15', // 15 minutes time slots
+        events: function (info, successCallback, failureCallback) {
+          // Hier fügst du den AJAX-Aufruf hinzu, um die Termine vom Backend abzurufen
+          $.ajax({
+            type: 'GET',
+            url: 'https://dhbw-appointment-scheduler-ad7e04c77a13.herokuapp.com/api/v1.0/appointments/all?calendar',
+            dataType: 'json',
+            success: function (data) {
+              var events = [];
+  
+              for (var i = 0; i < data.length; i++) {
+                var appointment = data[i];
+  
+                // Convert for FullCalendar
+                var datetimeString = appointment.Date + 'T' + appointment.Time;
+                var startDateTime = new Date(datetimeString);
+                var durationParts = appointment.Duration.split(':');
+                var hours = parseInt(durationParts[0], 10);
+                var minutes = parseInt(durationParts[1], 10);
+  
+                // Berechne die Endzeit, indem du die Dauer zur Startzeit hinzufügst
+                var endDateTime = new Date(startDateTime);
+                endDateTime.setHours(startDateTime.getHours() + hours);
+                endDateTime.setMinutes(startDateTime.getMinutes() + minutes);
+  
+                // Push into event array
+                events.push({
+                  title: "Nicht verfügbar",
+                  start: startDateTime,
+                  end: endDateTime,
+                  status: "booked"
+                });
+              }
+  
+              successCallback(events);
+            },
+            error: function () {
+              // Bei einem Fehler rufe die failureCallback-Funktion auf
+              failureCallback();
+            }
+          });
         },
-
-      ],
-        eventContent: function(arg) {
+        eventContent: function (arg) {
           var status = arg.event.extendedProps.status;
           return { html: '<div class="' + status + '">' + arg.event.title + '</div>' };
-      },
-      
+        }
+      });
+  
+      calendar.render();
     });
-    calendar.render();
-  });
+  </script>
   
 
-</script>
-
 </head>
+
 <body>
   <header>
     <img id="logo" src="../css/logo.png" alt="QuickCutz Logo">
-</header>
+  </header>
 
-<nav>
-  <ul>
+  <nav>
+    <ul>
       <li><a href="../Homepage.html">Startseite</a></li>
       <li class="dropdown">
-          <a href="javascript:void(0)" class="dropbtn">Kundenbereich</a>
-          <ul class="dropdown-content">
-              <li><a href="../subpages/SignUp.html">Registrierung</a></li>
-              <li><a href="../subpages/SignIn.html">Login</a></li>
-              <li><a href="../subpages/ViewAccount.html">Benutzerdaten</a></li>
-          </ul>
+        <a href="javascript:void(0)" class="dropbtn">Kundenbereich</a>
+        <ul class="dropdown-content">
+          <li><a href="../subpages/SignUp.html">Registrierung</a></li>
+          <li><a href="../subpages/SignIn.html">Login</a></li>
+          <li><a href="../subpages/ViewAccount.html">Benutzerdaten</a></li>
+        </ul>
       </li>
       <li><a href="../calendar/calendar_v1.html">Terminbuchung</a></li>
       <li><a href="../subpages/AboutUs.html">Über uns</a></li>
-  </ul>
-</nav>
+    </ul>
+  </nav>
 
-<div class="container">
+  <div class="container">
 
-<div id='calendar'></div>
+    <div id='calendar'></div>
 
-<form id="book-appointment">
-  <h3>Wähle deinen gewünschten Service</h3>
-  <label>
-      <input type="radio" name="hairstyle" value="service1">
-      Maschinenschnitt - Dauer: 15min - Preis: 18.00€
-  </label><br>
+    <form id="book-appointment">
+      <h3>Wähle deinen gewünschten Service</h3>
+      <label>
+        <input type="radio" name="hairstyle" value="service1">
+        Maschinenschnitt - Dauer: 15min - Preis: 18.00€
+      </label><br>
 
-  <label>
-      <input type="radio" name="hairstyle" value="service2">
-      Regulärer Haarschnitt - Dauer: 30min - Preis: 25.00€
-  </label><br>
+      <label>
+        <input type="radio" name="hairstyle" value="service2">
+        Regulärer Haarschnitt - Dauer: 30min - Preis: 25.00€
+      </label><br>
 
-  <label>
-      <input type="radio" name="hairstyle" value="service3">
-      Regulärer Haarschnitt & Bart- Dauer: 30min - Preis: 30.00€
-  </label><br>
+      <label>
+        <input type="radio" name="hairstyle" value="service3">
+        Regulärer Haarschnitt & Bart- Dauer: 30min - Preis: 30.00€
+      </label><br>
 
-  <label>
-      <input type="radio" name="hairstyle" value="service4">
-      Bartrasur (inkl. Rasiermesser) - Dauer: 15min - Preis: 15.00€
-  </label><br>
+      <label>
+        <input type="radio" name="hairstyle" value="service4">
+        Bartrasur (inkl. Rasiermesser) - Dauer: 15min - Preis: 15.00€
+      </label><br>
 
-  <label>
-      <input type="radio" name="hairstyle" value="service5">
-      Rundum-Service (inkl. Haare, Bart und Augenbrauen) - Dauer: 45min - Preis 35.00€
-  </label><br>
-  <h3>Wähle deinen Wunschtermin</h3>
-    <label for="datePicker">Tag:</label>
-    <input type="date" id="datePicker">
-    </br>
-    <label for="hour">Uhrzeit</label>
-    <select id="hour">
-      <option value="10">10</option>
-      <option value="11">11</option>
-      <option value="12">12</option>
-      <option value="13">13</option>
-      <option value="14">14</option>
-      <option value="15">15</option>
-      <option value="16">16</option>
-      <option value="17">17</option>
-      <option value="18">18</option>
-    </select>
-    <strong>:</strong>
-    <select id="minute">
-      <option value="00">00</option>
-      <option value="15">15</option>
-      <option value="30">30</option>
-      <option value="45">45</option>
-    </select>
-    <br> <br>
-    <input type="submit" id="submit-appointment" value="Jetzt buchen">
+      <label>
+        <input type="radio" name="hairstyle" value="service5">
+        Rundum-Service (inkl. Haare, Bart und Augenbrauen) - Dauer: 45min - Preis 35.00€
+      </label><br>
+      <h3>Wähle deinen Wunschtermin</h3>
+      <label for="datePicker">Tag:</label>
+      <input type="date" id="datePicker">
+      </br>
+      <label for="hour">Uhrzeit</label>
+      <select id="hour">
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+      </select>
+      <strong>:</strong>
+      <select id="minute">
+        <option value="00">00</option>
+        <option value="15">15</option>
+        <option value="30">30</option>
+        <option value="45">45</option>
+      </select>
+      <br> <br>
+      <input type="submit" id="submit-appointment" value="Jetzt buchen">
 
-    <div class="hint-box">
-      Buchungen können 24h vor dem Termin kostenfrei geändert oder storniert werden.<br>
-      Für kurzfristigere Änderungen melde dich bei uns.
-    </div>
+      <div class="hint-box">
+        Buchungen können 24h vor dem Termin kostenfrei geändert oder storniert werden.<br>
+        Für kurzfristigere Änderungen melde dich bei uns.
+      </div>
 
-</div>
+  </div>
 
 
-<footer>
-  <p>&copy; 2023 QuickCutz - Buchungssystem</p>
-</footer>
+  <footer>
+    <p>&copy; 2023 QuickCutz - Buchungssystem</p>
+  </footer>
 </body>
-</html>
+
+</html> 

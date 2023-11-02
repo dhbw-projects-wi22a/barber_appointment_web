@@ -63,6 +63,13 @@
         var hours = parseInt(durationParts[0], 10);
         var minutes = parseInt(durationParts[1], 10);
 
+        console.log(datetimeString,startDateTime);
+        console.log(durationParts);
+        console.log(hours);
+        console.log(minutes);
+        console.log(endDateTime);
+        console.log(events);
+
         // Berechne die Endzeit, indem du die Dauer zur Startzeit hinzufügst
         var endDateTime = new Date(startDateTime);
         endDateTime.setHours(startDateTime.getHours() + hours);

@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // GET-Command 
   $.ajax({
     type: 'GET',
-    url: 'https://dhbw-appointment-scheduler-ad7e04c77a13.herokuapp.com/api/v1.0/user/profile' + customerID,
+    url: 'https://dhbw-appointment-scheduler-ad7e04c77a13.herokuapp.com/api/v1.0/user/profile',
     headers: {"Authorization": token}, // test with localStorage.getItem('token') later 
     success: function(data) {
       var userForm = document.getElementById('userForm');

@@ -210,7 +210,8 @@ document.addEventListener('DOMContentLoaded', function() {
     headers: {"Authorization": token}, // test with localStorage.getItem('token') later 
     success: function(data) {
       var userForm = document.getElementById('userForm');
-
+      console.log(data);
+      console.log(userForm);
       // Fülle die Formularfelder mit den Daten
       userForm.querySelector('.email').value = data.eMail;
       userForm.querySelector('.password').value = data.userPassword;

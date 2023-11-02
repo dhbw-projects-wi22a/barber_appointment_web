@@ -178,9 +178,9 @@ $(document).ready(function() {
               //var token = response.token;
               console.log(response);
               //localStorage.setItem('token', token);
-              setTimeout(function() {
-                window.location.href = '/public/subpages/ViewAccount.html';
-              }, 3000);
+              //setTimeout(function() {
+               // window.location.href = '/public/subpages/ViewAccount.html';
+             // }, 3000);
             
               
           },

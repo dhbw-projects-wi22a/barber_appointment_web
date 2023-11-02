@@ -59,17 +59,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Button-function password recovery
 function goToPasswordRecovery() {
-  window.location.href = "./subpages/NewPassword.html";
+  window.location.href = "../subpages/NewPassword.html";
 }
 
 // Button-function signup
 function goToSignUp() {
-  window.location.href = "./subpages/SignUp.html";
+  window.location.href = "../subpages/SignUp.html";
 }
 
 // Button-function login
 function goToLogin() {
-  window.location.href = "./subpages/SignIn.html";
+  window.location.href = "../subpages/SignIn.html";
 }
 
 

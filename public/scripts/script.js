@@ -219,7 +219,6 @@ document.addEventListener('DOMContentLoaded', function() {
   $.ajax({
     type: 'GET',
     url: 'https://dhbw-appointment-scheduler-ad7e04c77a13.herokuapp.com/api/v1.0/user/profile',
-    //headers: {"Authorization": token}, // test with localStorage.getItem('token') later 
     headers: {"Authorization": localStorage.getItem('token')},
     success: function(data) {
       var userForm = document.getElementById('userForm');
@@ -245,15 +244,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Funktion zum Abrufen und Anzeigen der Termine
 function getAppointments() {
-  
-  
-  var customerID = 1; // Beispiel: 1
-  var url = `https://dhbw-appointment-scheduler-ad7e04c77a13.herokuapp.com/api/v1.0/appointments/user?customerID=${customerID}`;
-
-  $.ajax({
+    $.ajax({
     type: 'GET',
-    url: url,
-    dataType: 'json',
+    url: 'https://dhbw-appointment-scheduler-ad7e04c77a13.herokuapp.com/api/v1.0/appointments/user',
+    headers: {"Authorization": localStorage.getItem('token')},
+    //dataType: 'json',
     success: function(data) {
       var userAppointmentsTable = $('#userAppointmentsTable tbody');
       // Iterate trough all appointents of the user and add to the tablebody

@@ -78,7 +78,6 @@ $(document).ready(function() {
           data: JSON.stringify(appointmentData),
           success: function(response) {
               // Success-Handling 
-              $('#message').text('Anmeldung erfolgreich ');
               showPopup('Termin gebucht - prüf dein Postfach');            
           },
           error: function(error) {

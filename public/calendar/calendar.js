@@ -50,7 +50,7 @@ $(document).ready(function() {
     event.preventDefault(); // Verhindert das Standardverhalten des Formulars
 
     // Erfasse die Benutzereingaben
-    var selectedService = $('input[name="hairstyle"]:checked').val();
+    var selectedService = parseInt($('input[name="hairstyle"]:checked').val());
     var selectedDate = $('#datePicker').val();
     var selectedHour = $('#hour').val();
     var selectedMinute = $('#minute').val();

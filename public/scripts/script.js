@@ -213,11 +213,11 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log(data);
       console.log(userForm);
       // Fülle die Formularfelder mit den Daten
-      userForm.querySelector('.email').value = data.eMail;
-      userForm.querySelector('.password').value = data.userPassword;
-      userForm.querySelector('.phoneNumber').value = data.phoneNum;
-      userForm.querySelector('.firstName').value = data.firstName;
-      userForm.querySelector('.lastName').value = data.lastName;
+      userForm.querySelector('#email').value = data.eMail;
+      userForm.querySelector('#password').value = data.userPassword;
+      userForm.querySelector('#phoneNumber').value = data.phoneNum;
+      userForm.querySelector('#firstName').value = data.firstName;
+      userForm.querySelector('#lastName').value = data.lastName;
     },
     error: function(error) {
       // Fehlerbehandlung hier ausbauen

@@ -63,17 +63,17 @@ function goToLogin() {
 
 // Button-function signup (homepage)
 function goToSignUpHP() {
-  window.location.href = "/subpages/SignUp.html";
+  window.location.href = "subpages/SignUp.html";
 }
 
 // Button-function login (homepage)
 function goToLoginHP() {
-  window.location.href = "/subpages/SignIn.html";
+  window.location.href = "subpages/SignIn.html";
 }
 
 // Button-function calendar (homepage)
 function goToCalHP() {
-  window.location.href = "/calendar/calendar_v1.html";
+  window.location.href = "calendar/calendar_v1.html";
 }
 
 

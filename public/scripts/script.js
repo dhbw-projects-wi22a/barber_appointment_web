@@ -201,12 +201,13 @@ $(document).ready(function() {
 document.addEventListener('DOMContentLoaded', function() {
   // Hier noch einbauen das die customerID anhand des Tokens abgerufen wird?!
   var customerID = 1; // Beispiel: 1
+  var token = '53d53467-8a0e-46a1-b48d-9d724af67ca1'
 
   // GET-Command 
   $.ajax({
     type: 'GET',
-    url: 'https://dhbw-appointment-scheduler-ad7e04c77a13.herokuapp.com/api/v1.0/appointments/user?customerID=' + customerID,
-    dataType: 'application/json',
+    url: 'https://dhbw-appointment-scheduler-ad7e04c77a13.herokuapp.com/api/v1.0/user/profile' + customerID,
+    headers: {"Authorization": token}, // test with localStorage.getItem('token') later 
     success: function(data) {
       var userForm = document.getElementById('userForm');
 

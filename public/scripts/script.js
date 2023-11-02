@@ -122,47 +122,68 @@ document.addEventListener("DOMContentLoaded", function () {
 $(document).ready(function() {
 
   $('#signup-form').submit(function(event) {
-      event.preventDefault(); // Verhindert Standardverhalten des Formulars
+    event.preventDefault(); // Verhindert Standardverhalten des Formulars
 
-      // Erfasse die Formulardaten
-      var formData = {
-          firstName: $('#firstname-field').val(),
-          lastName: $('#lastname-field').val(),
-          eMail: $('#email-field').val(),  // username = email 
-          userPassword: $('#password-field').val(),
-          phoneNum: $('#phoneNum-field').val()
-      };
+    // Erfasse die Formulardaten
+    var firstName = $('#firstname-field').val();
+    var lastName = $('#lastname-field').val();
+    var email = $('#email-field').val();
+    var password = $('#password-field').val();
+    var phoneNum = $('#phoneNum-field').val();
 
-      // POST to MappingController
-      $.ajax({
-          type: 'POST',
-          url: 'https://dhbw-appointment-scheduler-ad7e04c77a13.herokuapp.com/api/v1.0/user/create', // URL of Heroku
-          contentType: 'application/json',
-          data: JSON.stringify(formData),
-          success: function(response) {
-              // Success-Handling 
-              $('#message').text('Registrierung erfolgreich: ' + response.message);
-              showPopup('Geschafft: Prüfe dein E-Mailpostfach');
-          },
-          error: function(error) {
-              // Errorhandling
-              $('#message').text('Fehler bei der Registrierung: ' + error.statusText);
-              showPopup('Fehler: Registrierung fehlgeschlagen');
-          }
-      });
+    if (!firstName || !lastName || !email || !password || !phoneNum) {
+      // Zeige eine Fehlermeldung, wenn ein Feld fehlt
+      $('#message').text('Bitte fülle alle Felder aus.');
+      return;
+    }
+
+    var formData = {
+      firstName: firstName,
+      lastName: lastName,
+      eMail: email,
+      userPassword: password,
+      phoneNum: phoneNum
+    };
+
+    // POST to MappingController
+    $.ajax({
+      type: 'POST',
+      url: 'https://dhbw-appointment-scheduler-ad7e04c77a13.herokuapp.com/api/v1.0/user/create',
+      contentType: 'application/json',
+      data: JSON.stringify(formData),
+      success: function(response) {
+        // Success-Handling 
+        $('#message').text('Registrierung erfolgreich: ' + response.message);
+        showPopup('Geschafft: Prüfe dein E-Mailpostfach');
+      },
+      error: function(error) {
+        // Errorhandling
+        $('#message').text('Fehler bei der Registrierung: ' + error.statusText);
+        showPopup('Fehler: Registrierung fehlgeschlagen');
+      }
+    });
   });
 });
+
 
 /* Sign in page - POST to backend */ 
 $(document).ready(function() {
 
   $('#login-form').submit(function(event) {
       event.preventDefault(); // Verhindert Standardverhalten des Formulars
-
+      
+      var email = $('#email-field').val();
+      var password = $('#password-field').val();
+      
+      if (!email || !password) {
+        // Zeige eine Fehlermeldung, wenn E-Mail oder Passwort fehlen
+        $('#message').text('Bitte fülle E-Mail und Passwort aus.');
+        return;
+      }
       // Erfasse die Formulardaten
       var formData = {
-          email: $('#email-field').val(),  // username = email 
-          password: $('#password-field').val()
+          email: email,
+          password: password
       };
 
       // POST to MappingController

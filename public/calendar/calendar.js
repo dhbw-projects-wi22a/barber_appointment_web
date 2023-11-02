@@ -6,7 +6,6 @@ function getCalendarEvents(info, successCallback, failureCallback) {
   dataType: 'json',
   success: function(data) {
     var events = [];
-    console.log(data);
     for (var i = 0; i < data.length; i++) {
       var appointment = data[i];
 

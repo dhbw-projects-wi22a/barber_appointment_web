@@ -200,6 +200,7 @@ $(document).ready(function() {
 /* List data for user profile */
 document.addEventListener('DOMContentLoaded', function() {
   // Hier noch einbauen das die customerID anhand des Tokens abgerufen wird?!
+  if (window.location.pathname === '/public/subpages/ViewAccount.html') {
   var customerID = 1; // Beispiel: 1
   var token = '53d53467-8a0e-46a1-b48d-9d724af67ca1'
 
@@ -210,8 +211,6 @@ document.addEventListener('DOMContentLoaded', function() {
     headers: {"Authorization": token}, // test with localStorage.getItem('token') later 
     success: function(data) {
       var userForm = document.getElementById('userForm');
-      console.log(data);
-      console.log(userForm);
       // Fülle die Formularfelder mit den Daten
       userForm.querySelector('#email').value = data.email;
       userForm.querySelector('#password').value = data.userPassword;
@@ -224,6 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
       console.error('Fehler beim Abrufen der Benutzerdaten:', error);
     }
   });
+}
 });
 
 

@@ -57,7 +57,9 @@
         var appointment = data[i];
 
         // Convert for FullCalendar
-        var datetimeString = appointment.Date + 'T' + appointment.Time;
+        //var datetimeString = appointment.Date + 'T' + appointment.Time;
+        var dateTimeString = appointment.date;
+        var time = appointment.time;
         var startDateTime = new Date(datetimeString);
         var duration = appointment.duration;
         var durationParts = duration.split(':');

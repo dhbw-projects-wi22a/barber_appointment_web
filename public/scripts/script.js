@@ -175,13 +175,13 @@ $(document).ready(function() {
               // Success-Handling 
               $('#message').text('Anmeldung erfolgreich ');
               showPopup('Du bist jetzt eingeloggt');
-              
-              setTimeout(function() {
-                window.location.href = '/public/subpages/ViewAccount.html';
-              }, 3000);
               var token = response.data.token;
               console.log(response);
               localStorage.setItem('token', token);
+              setTimeout(function() {
+                window.location.href = '/public/subpages/ViewAccount.html';
+              }, 3000);
+            
               
           },
           error: function(error) {

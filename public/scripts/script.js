@@ -179,6 +179,8 @@ $(document).ready(function() {
               setTimeout(function() {
                 window.location.href = '/public/subpages/ViewAccount.html';
               }, 3000);
+              var token = response.data.token;
+              localStorage.setItem('token', token);
               
           },
           error: function(error) {

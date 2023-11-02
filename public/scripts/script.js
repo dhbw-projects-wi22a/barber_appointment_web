@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* List appointments for user */
 
-// Funktion zum Abrufen und Anzeigen der Termine
+// Funktion zum Abrufen und Anzeigen der Termine des Users = token
 function getAppointments() {
     $.ajax({
     type: 'GET',
@@ -275,9 +275,10 @@ function getAppointments() {
 
 
 
+
 /* Password recovery */
 
-/* Appointment create */
+
 
 
 

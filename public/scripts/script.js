@@ -1,13 +1,3 @@
-// Event-Handler to show/hide the password
-$(".showpw").click(function () {
-  const PasswordField = $("input[name='password']");
-  if (PasswordField.attr("type") === "password") {
-    PasswordField.attr("type", "text"); // show password
-  } else {
-    PasswordField.attr("type", "password"); // hide password
-  }
-});
-
 
 // timeSelecter 
 document.addEventListener("DOMContentLoaded", function () {
@@ -45,8 +35,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Aktualisiere die Zeit beim Laden der Seite
   updateSelectedTime();
 });
-
-//dateSelecter 
 
 
 //serviceOptionSelecter 
@@ -174,7 +162,7 @@ $(document).ready(function() {
       // Erfasse die Formulardaten
       var formData = {
           eMail: $('#email-field').val(),  // username = email 
-          userPassword: $('#password-field').val()
+          password: $('#password-field').val()
       };
 
       // POST to MappingController

@@ -8,11 +8,12 @@
   <script src='../calendar/cal_script/index.global.js'></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script type="text/javascript" src="../scripts/script.js"></script>
-  <link rel="stylesheet" href="../css/style.css"></script>
+  <link rel="stylesheet" href="../css/style.css">
+  </script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var calendarEl = document.getElementById('calendar');
-  
+
       var calendar = new FullCalendar.Calendar(calendarEl, {
         locale: 'de',
         initialDate: new Date(),
@@ -38,57 +39,59 @@
         slotMaxTime: '19:00',
         hiddenDays: [0, 7], // hide Sundays
         slotDuration: '00:15', // 15 minutes time slots
-        events: function (info, successCallback, failureCallback) {
-          // Hier fügst du den AJAX-Aufruf hinzu, um die Termine vom Backend abzurufen
-          $.ajax({
-            type: 'GET',
-            url: 'https://dhbw-appointment-scheduler-ad7e04c77a13.herokuapp.com/api/v1.0/appointments/all?calendar',
-            dataType: 'json',
-            success: function (data) {
-              var events = [];
-  
-              for (var i = 0; i < data.length; i++) {
-                var appointment = data[i];
-  
-                // Convert for FullCalendar
-                var datetimeString = appointment.Date + 'T' + appointment.Time;
-                var startDateTime = new Date(datetimeString);
-                var durationParts = appointment.Duration.split(':');
-                var hours = parseInt(durationParts[0], 10);
-                var minutes = parseInt(durationParts[1], 10);
-  
-                // Berechne die Endzeit, indem du die Dauer zur Startzeit hinzufügst
-                var endDateTime = new Date(startDateTime);
-                endDateTime.setHours(startDateTime.getHours() + hours);
-                endDateTime.setMinutes(startDateTime.getMinutes() + minutes);
-  
-                // Push into event array
-                events.push({
-                  title: "Nicht verfügbar",
-                  start: startDateTime,
-                  end: endDateTime,
-                  status: "booked"
-                });
+        events: {
+          function(info, successCallback, failureCallback) {
+            // Hier fügst du den AJAX-Aufruf hinzu, um die Termine vom Backend abzurufen
+            $.ajax({
+              type: 'GET',
+              url: 'https://dhbw-appointment-scheduler-ad7e04c77a13.herokuapp.com/api/v1.0/appointments/all?calendar',
+              dataType: 'json',
+              success: function (data) {
+                var events = [];
+
+                for (var i = 0; i < data.length; i++) {
+                  var appointment = data[i];
+
+                  // Convert for FullCalendar
+                  var datetimeString = appointment.Date + 'T' + appointment.Time;
+                  var startDateTime = new Date(datetimeString);
+                  var durationParts = appointment.Duration.split(':');
+                  var hours = parseInt(durationParts[0], 10);
+                  var minutes = parseInt(durationParts[1], 10);
+
+                  // Berechne die Endzeit, indem du die Dauer zur Startzeit hinzufügst
+                  var endDateTime = new Date(startDateTime);
+                  endDateTime.setHours(startDateTime.getHours() + hours);
+                  endDateTime.setMinutes(startDateTime.getMinutes() + minutes);
+
+                  // Push into event array
+                  events.push({
+                    title: "Nicht verfügbar",
+                    start: startDateTime,
+                    end: endDateTime,
+                    status: "booked"
+                  });
+                }
+
+                successCallback(events);
+              },
+              error: function () {
+                // Bei einem Fehler rufe die failureCallback-Funktion auf
+                failureCallback();
               }
-  
-              successCallback(events);
-            },
-            error: function () {
-              // Bei einem Fehler rufe die failureCallback-Funktion auf
-              failureCallback();
-            }
-          });
-        },
-        eventContent: function (arg) {
-          var status = arg.event.extendedProps.status;
-          return { html: '<div class="' + status + '">' + arg.event.title + '</div>' };
+            });
+          },
+          eventContent: function (arg) {
+            var status = arg.event.extendedProps.status;
+            return { html: '<div class="' + status + '">' + arg.event.title + '</div>' };
+          }
         }
       });
-  
+
       calendar.render();
     });
   </script>
-  
+
 
 </head>
 
@@ -182,4 +185,4 @@
   </footer>
 </body>
 
-</html> 
+</html>

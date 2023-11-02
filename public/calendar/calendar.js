@@ -48,7 +48,7 @@ $(document).ready(function() {
 
   $('#book-appointment').submit(function(event) {
     event.preventDefault(); // Verhindert das Standardverhalten des Formulars
-
+    console.log('absenden funktioniert')
     // Erfasse die Benutzereingaben
     var selectedService = parseInt($('input[name="hairstyle"]:checked').val());
     var selectedDate = $('#datePicker').val();

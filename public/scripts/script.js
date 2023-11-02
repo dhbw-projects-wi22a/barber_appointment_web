@@ -161,7 +161,7 @@ $(document).ready(function() {
 
       // Erfasse die Formulardaten
       var formData = {
-          eMail: $('#email-field').val(),  // username = email 
+          email: $('#email-field').val(),  // username = email 
           password: $('#password-field').val()
       };
 

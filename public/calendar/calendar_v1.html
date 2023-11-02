@@ -11,85 +11,84 @@
   <link rel="stylesheet" href="../css/style.css">
   </script>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var calendarEl = document.getElementById('calendar');
+   document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
 
-      var calendar = new FullCalendar.Calendar(calendarEl, {
-        locale: 'de',
-        initialDate: new Date(),
-        initialView: 'timeGridWeek',
-        nowIndicator: true,
-        expandRows: true,
-        selectable: true,
-        headerToolbar: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'timeGridDay,timeGridWeek'
-        },
-        navLinks: true, // can click day/week names to navigate views
-        editable: true,
-        selectable: true,
-        selectMirror: true,
-        dayMaxEvents: true, // allow "more" link when too many events
-        businessHours: {
-          startTime: '10:00',
-          endTime: '19:00',
-        },
-        slotMinTime: '10:00', // only show slots between 10am and 7pm
-        slotMaxTime: '19:00',
-        hiddenDays: [0, 7], // hide Sundays
-        slotDuration: '00:15', // 15 minutes time slots
-        events: {
-          function(info, successCallback, failureCallback) {
-            // Hier fügst du den AJAX-Aufruf hinzu, um die Termine vom Backend abzurufen
-            $.ajax({
-              type: 'GET',
-              url: 'https://dhbw-appointment-scheduler-ad7e04c77a13.herokuapp.com/api/v1.0/appointments/all?calendar',
-              dataType: 'json',
-              success: function (data) {
-                var events = [];
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    locale: 'de',
+    initialDate: new Date(),
+    initialView: 'timeGridWeek',
+    nowIndicator: true,
+    expandRows: true,
+    selectable: true,
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'timeGridDay,timeGridWeek'
+    },
+    navLinks: true, // can click day/week names to navigate views
+    editable: true,
+    selectable: true,
+    selectMirror: true,
+    dayMaxEvents: true, // allow "more" link when too many events
+    businessHours: {
+      startTime: '10:00',
+      endTime: '19:00',
+    },
+    slotMinTime: '10:00', // only show slots between 10am and 7pm
+    slotMaxTime: '19:00',
+    hiddenDays: [0, 7], // hide Sundays
+    slotDuration: '00:15', // 15 minutes time slots,
+    eventContent: function(arg) {
+      var status = arg.event.extendedProps.status;
+      return { html: '<div class="' + status + '">' + arg.event.title + '</div>' };
+    },
+  });
 
-                for (var i = 0; i < data.length; i++) {
-                  var appointment = data[i];
+  // Hier wird die AJAX-Anfrage verschachtelt
+  $.ajax({
+    type: 'GET',
+    url: 'https://dhbw-appointment-scheduler-ad7e04c77a13.herokuapp.com/api/v1.0/appointments/all?calendar',
+    dataType: 'json',
+    success: function(data) {
+      var events = [];
 
-                  // Convert for FullCalendar
-                  var datetimeString = appointment.Date + 'T' + appointment.Time;
-                  var startDateTime = new Date(datetimeString);
-                  var durationParts = appointment.Duration.split(':');
-                  var hours = parseInt(durationParts[0], 10);
-                  var minutes = parseInt(durationParts[1], 10);
+      for (var i = 0; i < data.length; i++) {
+        var appointment = data[i];
 
-                  // Berechne die Endzeit, indem du die Dauer zur Startzeit hinzufügst
-                  var endDateTime = new Date(startDateTime);
-                  endDateTime.setHours(startDateTime.getHours() + hours);
-                  endDateTime.setMinutes(startDateTime.getMinutes() + minutes);
+        // Convert for FullCalendar
+        var datetimeString = appointment.Date + 'T' + appointment.Time;
+        var startDateTime = new Date(datetimeString);
+        var durationParts = appointment.Duration.split(':');
+        var hours = parseInt(durationParts[0], 10);
+        var minutes = parseInt(durationParts[1], 10);
 
-                  // Push into event array
-                  events.push({
-                    title: "Nicht verfügbar",
-                    start: startDateTime,
-                    end: endDateTime,
-                    status: "booked"
-                  });
-                }
+        // Berechne die Endzeit, indem du die Dauer zur Startzeit hinzufügst
+        var endDateTime = new Date(startDateTime);
+        endDateTime.setHours(startDateTime.getHours() + hours);
+        endDateTime.setMinutes(startDateTime.getMinutes() + minutes);
 
-                successCallback(events);
-              },
-              error: function () {
-                // Bei einem Fehler rufe die failureCallback-Funktion auf
-                failureCallback();
-              }
-            });
-          },
-          eventContent: function (arg) {
-            var status = arg.event.extendedProps.status;
-            return { html: '<div class="' + status + '">' + arg.event.title + '</div>' };
-          }
-        }
-      });
+        // Push in das Event-Array
+        events.push({
+          title: "Nicht verfügbar",
+          start: startDateTime,
+          end: endDateTime,
+          status: "booked"
+        });
+      }
 
-      calendar.render();
-    });
+      // Hier werden die Events zur Kalenderansicht hinzugefügt
+      calendar.addEventSource(events);
+    },
+    error: function() {
+      // Bei einem Fehler kannst du hier eine Fehlerbehandlung implementieren
+      console.error('Fehler beim Abrufen der Daten');
+    }
+  });
+
+  calendar.render();
+});
+
   </script>
 
 

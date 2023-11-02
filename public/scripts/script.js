@@ -180,6 +180,7 @@ $(document).ready(function() {
                 window.location.href = '/public/subpages/ViewAccount.html';
               }, 3000);
               var token = response.data.token;
+              console.log(response);
               localStorage.setItem('token', token);
               
           },

@@ -173,8 +173,8 @@ $(document).ready(function() {
           data: JSON.stringify(formData),
           success: function(response) {
               // Success-Handling 
-              $('#message').text('Anmeldung erfolgreich: ' + response.message);
-              showPopup('Du bis jetzt eingeloggt');
+              $('#message').text('Anmeldung erfolgreich ');
+              showPopup('Du bist jetzt eingeloggt');
           },
           error: function(error) {
               // Errorhandling

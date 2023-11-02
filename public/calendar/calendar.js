@@ -46,7 +46,7 @@ function getCalendarEvents(info, successCallback, failureCallback) {
 /* Appointment create */
 $(document).ready(function() {
 
-  $('#book-appointment').submit(function(event) {
+  $('#submit-appointment').submit(function(event) {
     event.preventDefault(); // Verhindert das Standardverhalten des Formulars
 
     // Erfasse die Benutzereingaben

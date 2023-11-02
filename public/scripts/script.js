@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log(data);
       console.log(userForm);
       // Fülle die Formularfelder mit den Daten
-      userForm.querySelector('#email').value = data.eMail;
+      userForm.querySelector('#email').value = data.email;
       userForm.querySelector('#password').value = data.userPassword;
       userForm.querySelector('#phoneNumber').value = data.phoneNum;
       userForm.querySelector('#firstName').value = data.firstName;

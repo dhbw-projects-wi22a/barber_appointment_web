@@ -157,7 +157,6 @@ $(document).ready(function() {
       },
       error: function(error) {
         // Errorhandling
-        $('#message').text('Fehler bei der Registrierung: ' + error.statusText);
         showPopup('Fehler: Registrierung fehlgeschlagen' + error.statusText);
       }
     });
@@ -205,7 +204,6 @@ $(document).ready(function() {
           },
           error: function(error) {
               // Errorhandling
-              $('#message').text('Fehler bei der Anmeldung: ' + error.statusText);
               showPopup('Fehler: Prüfe E-Mail und/oder Passwort');
           }
       });
@@ -216,8 +214,6 @@ $(document).ready(function() {
 document.addEventListener('DOMContentLoaded', function() {
   // Hier noch einbauen das die customerID anhand des Tokens abgerufen wird?!
   if (window.location.pathname === '/public/subpages/ViewAccount.html') {
-  var customerID = 1; // Beispiel: 1
-  var token = '53d53467-8a0e-46a1-b48d-9d724af67ca1'
 
   // GET-Command 
   $.ajax({
@@ -236,11 +232,50 @@ document.addEventListener('DOMContentLoaded', function() {
     },
     error: function(error) {
       // Fehlerbehandlung hier ausbauen
+      showPopup('Fehler beim abrufen der Benutzerdaten');
       console.error('Fehler beim Abrufen der Benutzerdaten:', error);
     }
   });
+  // call function to get user appointments, only if site loads and token is valid
+  getAppointments();
 }
 });
+
+/* List appointments for user */
+
+// Funktion zum Abrufen und Anzeigen der Termine
+function getAppointments() {
+  
+  
+  var customerID = 1; // Beispiel: 1
+  var url = `https://dhbw-appointment-scheduler-ad7e04c77a13.herokuapp.com/api/v1.0/appointments/user?customerID=${customerID}`;
+
+  $.ajax({
+    type: 'GET',
+    url: url,
+    dataType: 'json',
+    success: function(data) {
+      var userAppointmentsTable = $('#userAppointmentsTable tbody');
+
+      // Iterate trough all appointents of the user and add to the tablebody
+      data.appointments.forEach(function(appointment) {
+        var row = `<tr>
+          <td>${appointment.appointmentID}</td>
+          <td>${appointment.date}</td>
+          <td>${appointment.time}</td>
+          <td>${appointment.serviceName}</td>
+          <td>${appointment.duration}</td>
+          <td>${appointment.price}</td>
+        </tr>`;
+        userAppointmentsTable.append(row);
+      });
+    },
+    error: function(error) {
+      showPopup('Terminbuchungen konnten nicht abgerufen werden');
+      console.error('Fehler beim Abrufen der Termindaten:', error);
+    }
+  });
+}
 
 
 
@@ -250,9 +285,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* Appointment create */
 
-/* List all appointments for calendar */
 
-/* List appointments for user */
+
 
 
 

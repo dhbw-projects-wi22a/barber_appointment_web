@@ -40,9 +40,9 @@
         slotMaxTime: '19:00',
         hiddenDays: [0, 7], // hide Sundays
         slotDuration: '00:15', // 15 minutes time slots,
-        events: [function (info, successCallback, failureCallback) {
+        events: function (info, successCallback, failureCallback) {
           getCalendarEvents(info, successCallback, failureCallback)
-        }],
+        },
 
         eventContent: function (arg) {
           var status = arg.event.extendedProps.status;

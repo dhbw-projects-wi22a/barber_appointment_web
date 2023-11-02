@@ -175,9 +175,9 @@ $(document).ready(function() {
               // Success-Handling 
               $('#message').text('Anmeldung erfolgreich ');
               showPopup('Du bist jetzt eingeloggt');
-              var token = response.data.token;
+              //var token = response.token;
               console.log(response);
-              localStorage.setItem('token', token);
+              //localStorage.setItem('token', token);
               setTimeout(function() {
                 window.location.href = '/public/subpages/ViewAccount.html';
               }, 3000);

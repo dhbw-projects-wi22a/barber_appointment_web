@@ -175,6 +175,11 @@ $(document).ready(function() {
               // Success-Handling 
               $('#message').text('Anmeldung erfolgreich ');
               showPopup('Du bist jetzt eingeloggt');
+              
+              setTimeout(function() {
+                window.location.href = '/public/subpages/ViewAccount.html';
+              }, 3000);
+              
           },
           error: function(error) {
               // Errorhandling
@@ -196,7 +201,8 @@ document.addEventListener('DOMContentLoaded', function() {
   $.ajax({
     type: 'GET',
     url: 'https://dhbw-appointment-scheduler-ad7e04c77a13.herokuapp.com/api/v1.0/user/profile',
-    headers: {"Authorization": token}, // test with localStorage.getItem('token') later 
+    //headers: {"Authorization": token}, // test with localStorage.getItem('token') later 
+    headers: {"Authorization": localStorage.getItem('token')},
     success: function(data) {
       var userForm = document.getElementById('userForm');
       // Fülle die Formularfelder mit den Daten

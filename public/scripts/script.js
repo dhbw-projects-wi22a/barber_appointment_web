@@ -133,7 +133,7 @@ $(document).ready(function() {
 
     if (!firstName || !lastName || !email || !password || !phoneNum) {
       // Zeige eine Fehlermeldung, wenn ein Feld fehlt
-      $('#message').text('Bitte fülle alle Felder aus.');
+      showPopup('Bitte fülle alle Felder aus.');
       return;
     }
 
@@ -153,13 +153,12 @@ $(document).ready(function() {
       data: JSON.stringify(formData),
       success: function(response) {
         // Success-Handling 
-        $('#message').text('Registrierung erfolgreich: ' + response.message);
         showPopup('Geschafft: Prüfe dein E-Mailpostfach');
       },
       error: function(error) {
         // Errorhandling
         $('#message').text('Fehler bei der Registrierung: ' + error.statusText);
-        showPopup('Fehler: Registrierung fehlgeschlagen');
+        showPopup('Fehler: Registrierung fehlgeschlagen' + error.statusText);
       }
     });
   });
@@ -177,7 +176,7 @@ $(document).ready(function() {
       
       if (!email || !password) {
         // Zeige eine Fehlermeldung, wenn E-Mail oder Passwort fehlen
-        $('#message').text('Bitte fülle E-Mail und Passwort aus.');
+        showPopup('Bitte fülle E-Mail und Passwort aus.');
         return;
       }
       // Erfasse die Formulardaten

@@ -41,3 +41,50 @@ function getCalendarEvents(info, successCallback, failureCallback) {
   }
 });
 }
+
+
+/* Appointment create */
+$(document).ready(function() {
+
+  $('#book-appointment').submit(function(event) {
+    event.preventDefault(); // Verhindert das Standardverhalten des Formulars
+
+    // Erfasse die Benutzereingaben
+    var selectedService = $('input[name="hairstyle"]:checked').val();
+    var selectedDate = $('#datePicker').val();
+    var selectedHour = $('#hour').val();
+    var selectedMinute = $('#minute').val();
+
+    // Überprüfe, ob alle Felder ausgefüllt sind
+    if (!selectedService || !selectedDate || !selectedHour || !selectedMinute) {
+      showPopup('Bitte fülle alle Felder aus.');
+      return;
+    }
+
+    // Erstelle ein JSON-Objekt mit den Benutzereingaben
+    var appointmentData = {
+      customerID: 0,
+      serviceID: selectedService,
+      date: selectedDate,
+      time: selectedHour + ':' + selectedMinute
+    };
+
+      // POST to MappingController
+      $.ajax({
+          type: 'POST',
+          url: 'https://dhbw-appointment-scheduler-ad7e04c77a13.herokuapp.com/api/v1.0/appointments/create', // URL of Heroku
+          headers: {"Authorization": localStorage.getItem('token')},
+          contentType: 'application/json',
+          data: JSON.stringify(appointmentData),
+          success: function(response) {
+              // Success-Handling 
+              $('#message').text('Anmeldung erfolgreich ');
+              showPopup('Termin gebucht - prüf dein Postfach');            
+          },
+          error: function(error) {
+              // Errorhandling
+              showPopup('Fehler: Termin nicht gebucht');
+          }
+      });
+  });
+});

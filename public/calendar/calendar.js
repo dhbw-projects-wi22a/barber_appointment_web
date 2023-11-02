@@ -28,11 +28,13 @@ function getCalendarEvents(info, successCallback, failureCallback) {
       });
     }
 
+    successCallback(events);
+
     // Hier werden die Events zur Kalenderansicht hinzugefügt
-    calendar.addEventSource(events);
+    //calendar.addEventSource(events);
 
     // Kalender rendern nachdem die Daten geladen wurden
-    calendar.render();
+    //calendar.render();
   },
   error: function() {
     // Bei einem Fehler kannst du hier eine Fehlerbehandlung implementieren

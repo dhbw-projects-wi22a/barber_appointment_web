@@ -256,7 +256,7 @@ function getAppointments() {
     dataType: 'json',
     success: function(data) {
       var userAppointmentsTable = $('#userAppointmentsTable tbody');
-
+u
       // Iterate trough all appointents of the user and add to the tablebody
       data.appointments.forEach(function(appointment) {
         var row = `<tr>

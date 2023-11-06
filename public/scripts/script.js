@@ -143,7 +143,7 @@ $(document).ready(function () {
       success: function (response) {
         // Success-Handling
         $("#message").text("Anmeldung erfolgreich ");
-        showPopup("Du bist jetzt eingeloggt");
+        showPopup("Du wirst jetzt eingeloggt");
         var token = response.token;
         localStorage.setItem("token", token);
         setTimeout(function () {
@@ -227,13 +227,14 @@ function getAppointments() {
 $(document).ready(function() {
   $('#logoff-user').click(function(event) {
     event.preventDefault();
+    showPopup("Abmeldung wird durchgeführt");
     logoffUser();
+    
   });
 
   function logoffUser() {
     localStorage.removeItem('token');
-    showPopup("Abmeldung wird durchgeführt");
-
+    
     setTimeout(function() {
       window.location.href = "/public/subpages/AccountLogOff.html";
     }, 3000);

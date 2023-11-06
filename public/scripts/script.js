@@ -1,45 +1,5 @@
-// timeSelecter
-document.addEventListener("DOMContentLoaded", function () {
-  const openingHour = 10;
-  const closingHour = 18;
-
-  const hourDropdown = document.getElementById("hour");
-  const minuteDropdown = document.getElementById("minute");
-
-  // Erstelle Optionen für die Stunden
-  for (let hours = openingHour; hours <= closingHour; hours++) {
-    const option = document.createElement("option");
-    option.value = hours;
-    option.text = hours;
-    hourDropdown.appendChild(option);
-  }
-
-  // Funktion, um die ausgewählte Zeit zu erhalten
-  function getSelectedTime() {
-    const selectedHour = hourDropdown.value;
-    const selectedMinute = minuteDropdown.value;
-    return `${selectedHour}:${selectedMinute}`;
-  }
-
-  // Aktualisiere die Zeit beim Laden der Seite
-  function updateSelectedTime() {
-    const selectedTime = getSelectedTime();
-    //console.log(selectedTime); // Zum Testen ob korrekte Zeit übergeben wird
-  }
-
-  // Aktualisiere das timePicker-Element, wenn die Auswahl geändert wird
-  hourDropdown.addEventListener("change", updateSelectedTime);
-  minuteDropdown.addEventListener("change", updateSelectedTime);
-
-  // Aktualisiere die Zeit beim Laden der Seite
-  updateSelectedTime();
-});
-
-//serviceOptionSelecter
 
 // check if date is available
-
-//check if option + date + time is selected
 
 //check that enough time is given example -> appointmentTime = 18:45 but service duration = 30min
 
@@ -272,6 +232,7 @@ $(document).ready(function() {
 
   function logoffUser() {
     localStorage.removeItem('token');
+    showPopup("Abmeldung wird durchgeführt");
 
     setTimeout(function() {
       window.location.href = "/public/subpages/AccountLogOff.html";

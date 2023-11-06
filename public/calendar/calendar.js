@@ -1,3 +1,45 @@
+// timeSelecter
+document.addEventListener("DOMContentLoaded", function () {
+  const openingHour = 10;
+  const closingHour = 18;
+
+  const hourDropdown = document.getElementById("hour");
+  const minuteDropdown = document.getElementById("minute");
+
+if (window.location.pathname =='/public/calendar/calendar_v1.html') {
+
+  // Erstelle Optionen für die Stunden
+  for (let hours = openingHour; hours <= closingHour; hours++) {
+    const option = document.createElement("option");
+    option.value = hours;
+    option.text = hours;
+    hourDropdown.appendChild(option);
+  }
+
+  // Funktion, um die ausgewählte Zeit zu erhalten
+  function getSelectedTime() {
+    const selectedHour = hourDropdown.value;
+    const selectedMinute = minuteDropdown.value;
+    return `${selectedHour}:${selectedMinute}`;
+  }
+
+  // Aktualisiere die Zeit beim Laden der Seite
+  function updateSelectedTime() {
+    const selectedTime = getSelectedTime();
+    //console.log(selectedTime); // Zum Testen ob korrekte Zeit übergeben wird
+  }
+
+  // Aktualisiere das timePicker-Element, wenn die Auswahl geändert wird
+  hourDropdown.addEventListener("change", updateSelectedTime);
+  minuteDropdown.addEventListener("change", updateSelectedTime);
+
+  // Aktualisiere die Zeit beim Laden der Seite
+  updateSelectedTime();
+}
+});
+
+
+
 function getCalendarEvents(info, successCallback, failureCallback) {
   
   $.ajax({
@@ -86,3 +128,5 @@ $(document).ready(function() {
       });
   });
 });
+
+

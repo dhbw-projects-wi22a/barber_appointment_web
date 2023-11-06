@@ -264,20 +264,21 @@ function getAppointments() {
 }
 
 /* Log off - remove token in localStorage and redirect user */
-const logoffBtn = document.getElementById("logoff-user");
+$(document).ready(function() {
+  $('#logoff-user').click(function(event) {
+    event.preventDefault();
+    logoffUser();
+  });
 
-logoffBtn.addEventListener("click", function (event) {
-  event.preventDefault();
-  logoffUser();
+  function logoffUser() {
+    localStorage.removeItem('token');
+
+    setTimeout(function() {
+      window.location.href = "/public/subpages/AccountLogOff.html";
+    }, 3000);
+  }
 });
 
-function logoffUser() {
-  localStorage.removeItem("token");
-
-  setTimeout(function () {
-    window.location.href = "/public/subpages/AccountLogOff.html";
-  }, 3000);
-}
 
 /* Password recovery */
 

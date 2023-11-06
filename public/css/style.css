@@ -253,7 +253,8 @@ footer {
 #signup-form-submit,
 #pw-recovery,
 #submit-appointment,
-#save-userarea {
+#save-userarea,
+#logoff-user {
   text-decoration: none;
   background-color: #333;
   color: #fff;
@@ -295,7 +296,8 @@ footer {
 #book-appointment-landing:hover,
 #login-signup-landing:hover,
 #login-signin-landing:hover,
-#save-userarea:hover  {
+#save-userarea:hover,
+#logoff-user:hover  {
   background-color: #555;
   color: #d29107
 }

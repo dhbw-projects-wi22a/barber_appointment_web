@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const hourDropdown = document.getElementById("hour");
   const minuteDropdown = document.getElementById("minute");
 
-if (window.location.pathname =='/public/calendar/calendar_v1.html') {
+if (window.location.pathname =='/public/calendar/calendar.html') {
 
   // Erstelle Optionen für die Stunden
   for (let hours = openingHour; hours <= closingHour; hours++) {

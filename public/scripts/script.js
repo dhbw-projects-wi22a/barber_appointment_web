@@ -30,7 +30,7 @@ function goToLoginHP() {
 
 // Button-function calendar (homepage)
 function goToCalHP() {
-  window.location.href = "../public/calendar/calendar_v1.html";
+  window.location.href = "../public/calendar/calendar.html";
 }
 
 // Warten auf das Laden des DOM, um sicherzustellen, dass die HTML-Elemente verfügbar sind
@@ -142,8 +142,7 @@ $(document).ready(function () {
       data: JSON.stringify(formData),
       success: function (response) {
         // Success-Handling
-        $("#message").text("Anmeldung erfolgreich ");
-        showPopup("Du wirst jetzt eingeloggt");
+        showPopup("Anmeldung erfolgreicht");
         var token = response.token;
         localStorage.setItem("token", token);
         setTimeout(function () {
@@ -182,7 +181,6 @@ document.addEventListener("DOMContentLoaded", function () {
         error: function (error) {
           // Fehlerbehandlung hier ausbauen
           showPopup("Fehler beim abrufen der Benutzerdaten");
-          console.error("Fehler beim Abrufen der Benutzerdaten:", error);
         },
       });
       // call function to get user appointments, only if site loads and token is valid
@@ -218,7 +216,6 @@ function getAppointments() {
     },
     error: function (error) {
       showPopup("Terminbuchungen konnten nicht abgerufen werden");
-      console.error("Fehler beim Abrufen der Termindaten:", error);
     },
   });
 }

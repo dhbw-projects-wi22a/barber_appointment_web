@@ -109,7 +109,7 @@ $(document).ready(function () {
       },
       error: function (error) {
         // Errorhandling
-        showPopup("Fehler: Registrierung fehlgeschlagen" + error.statusText);
+        showPopup("Fehler: Registrierung fehlgeschlagen");
       },
     });
   });
@@ -142,7 +142,7 @@ $(document).ready(function () {
       data: JSON.stringify(formData),
       success: function (response) {
         // Success-Handling
-        showPopup("Anmeldung erfolgreicht");
+        showPopup("Anmeldung erfolgreich");
         var token = response.token;
         localStorage.setItem("token", token);
         setTimeout(function () {
@@ -256,3 +256,5 @@ function showPopup(message) {
 function hidePopup() {
   $("#popup").fadeOut();
 }
+
+
